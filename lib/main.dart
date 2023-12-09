@@ -4,7 +4,11 @@ import 'constants.dart';
 import 'logic.dart';
 import 'widgets/keypad.dart';
 
+/////////////////////////////////////////////////////////
+
 void main() => runApp(const MyApp());
+
+/////////////////////////////////////////////////////////
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -20,14 +24,19 @@ class MyApp extends StatelessWidget {
   }
 }
 
+/////////////////////////////////////////////////////////
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
+
   final String title;
 
   @override
   // ignore: library_private_types_in_public_api
   _MyHomePageState createState() => _MyHomePageState();
 }
+
+/////////////////////////////////////////////////////////
 
 class _MyHomePageState extends State<MyHomePage> {
   String txtResult = '0';
@@ -37,12 +46,6 @@ class _MyHomePageState extends State<MyHomePage> {
   ///
   @override
   Widget build(BuildContext context) {
-    // ignore: always_declare_return_types
-    onPressed(String text) {
-      _logic.input(text);
-      setState(() => txtResult = _logic.text);
-    }
-
     return Scaffold(
       backgroundColor: colorMain,
       body: SafeArea(
@@ -64,7 +67,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   )
                 ],
               ),
-              KeyPad(onPressed),
+              KeyPad((text) {
+                _logic.input(text);
+
+                setState(() => txtResult = _logic.text);
+              })
             ],
           ),
         ),

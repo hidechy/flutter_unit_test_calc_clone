@@ -4,10 +4,11 @@ import '../constants.dart';
 import 'button.dart';
 
 class KeyPad extends StatelessWidget {
-
   const KeyPad(this.onPressed, {super.key});
+
   final FunctionOnPressed? onPressed;
 
+  ///
   @override
   Widget build(BuildContext context) {
     return Column(
